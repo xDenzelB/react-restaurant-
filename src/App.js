@@ -7,7 +7,7 @@ import ListPage from './ListPage';
 import CreatePage from './CreatePage'; 
 import { getUser, logout } from './services/fetch-Utils';
 
-function App() {
+export default function App() {
 
   const [user, setUser] = useState(null);
 
@@ -38,10 +38,41 @@ function App() {
             </div>
           }
         </header>
-     
+        <main>
+          <Switch>
+            <Route exact path ='/'>
+              {
+                user
+                  ? <Redirect to='/restaurants' />
+                  : <AuthPage setUser={setUser} />
+              }
+            </Route>
+            <Route exact path='/restaurants'>
+              {
+                user
+                  ? <ListPage />
+                  : <Redirect to='/' />
+              }
+            </Route>
+            <Route exact path='/restaurants/:id'>
+              {
+                user
+                  ? <DetailPage />
+                  : <Redirect to='/' />
+              }
+            </Route>
+            <Route exact path='/create'>
+              {
+                user 
+                  ? <CreatePage />
+                  : <Redirect to='/'/>
+              }
+            </Route>
+          </Switch>
+        </main>
       </div>
     </Router>
   );
 }
 
-export default App;
+
