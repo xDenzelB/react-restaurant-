@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, useHistory } from 'react-router-dom';
 import { getRestaurantById } from './services/fetch-Utils';
+
 
 export default function DetailPage() {
   const [restaurant, setRestaurant] = useState({});
   const match = useRouteMatch();
+  const history = useHistory();
 
+  function redirectUpdate() {
+    history.push(`/update/${match.params.id}`);
+  }
   useEffect(() => {
     async function fetch() {
       const restaurants = await getRestaurantById(match.params.id);
@@ -23,6 +28,7 @@ export default function DetailPage() {
       <p>
         {restaurant.description}
       </p>
+      <button onClick={redirectUpdate}>Update Restaurant</button>
     </div>
   );
 }

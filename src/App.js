@@ -5,6 +5,7 @@ import AuthPage from './AuthPage';
 import DetailPage from './DetailPage';
 import ListPage from './ListPage';
 import CreatePage from './CreatePage'; 
+import UpdatePage from './UpdatePage';
 import { getUser, logout } from './services/fetch-Utils';
 
 export default function App() {
@@ -66,6 +67,13 @@ export default function App() {
                 user 
                   ? <CreatePage />
                   : <Redirect to='/'/>
+              }
+            </Route>
+            <Route exact path='/update/:id'>
+              {
+                user 
+                  ? <UpdatePage />
+                  : <Redirect to='/' />
               }
             </Route>
           </Switch>
