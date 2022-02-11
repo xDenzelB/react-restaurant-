@@ -2,7 +2,7 @@ import { checkError, client } from './client';
 
 export async function createRestaurant(restaurant) {
   const response = await client 
-    .from('restaurant')
+    .from('restaurant_inventory')
     .insert([restaurant]);
 
   return checkError(response);
@@ -10,7 +10,7 @@ export async function createRestaurant(restaurant) {
 
 export async function getRestaurant() {
   const response = await client 
-    .from('restaurant')
+    .from('restaurant_inventory')
     .select();
 
   return checkError(response);
@@ -18,7 +18,7 @@ export async function getRestaurant() {
 
 export async function getRestaurantById(id) {
   const response = await client 
-    .from('restaurant')
+    .from('restaurant_inventory')
     .select()
     .match({ id })
     .single();
