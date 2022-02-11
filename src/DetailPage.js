@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouteMatch, useHistory } from 'react-router-dom';
 import { getRestaurantById } from './services/fetch-Utils';
-
+import './App.css';
 
 export default function DetailPage() {
   const [restaurant, setRestaurant] = useState({});
@@ -24,7 +24,7 @@ export default function DetailPage() {
   return (
     <div className='details'>
       <h1>{restaurant.name}</h1>
-      <h2>An {restaurant.type} Restaurant located in {restaurant.located} with a price rating of {restaurant.price_rate} out of 5</h2>
+      <h2>A {restaurant.type} Restaurant located in {restaurant.located} with a price rating of {restaurant.price_rate} out of 5</h2>
       <p>
         {restaurant.description}
       </p>

@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
-import { createRestaurant, deleteRestaurant, getRestaurantById, updateRestaurant } from './services/fetch-Utils';
-import { useHistory, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { createRestaurant } from './services/fetch-Utils';
+import { useHistory } from 'react-router-dom';
 
 
 export default function CreatePage() {
-  const { id } = useParams();
   const history = useHistory();
   const [name, setName] = useState('');
   const [located, setLocated] = useState('');
@@ -12,37 +11,7 @@ export default function CreatePage() {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState('');
 
-  useEffect(() => {
-    async function fetch() {
-      const restaurant = await getRestaurantById(id);
-      setName(restaurant.name);
-      setLocated(restaurant.located);
-      setType(restaurant.type);
-      setPrice(restaurant.price_rate);
-      setDescription(restaurant.description);
-
-    }
-
-    fetch();
-  }, [id]);
-
-//   async function handleDelete() {
-//     await deleteRestaurant(id);
-
-//     history.push('/restaurants');
-//   }
-
-//   async function handleUpdate(e) {
-//     e.preventDefault();
-
-//     await updateRestaurant(id, {
-//       name: name,
-//       located: located,
-//       type: type,
-//       price_rate: price,
-//       description: description
-//     });
-//   }
+  
   
   async function handleSubmit(e) {
     e.preventDefault();

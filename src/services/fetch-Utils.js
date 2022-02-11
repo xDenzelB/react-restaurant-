@@ -1,7 +1,7 @@
 import { checkError, client } from './client';
 
 export async function updateRestaurant(id, updatedRestaurant) {
-  const response = await response 
+  const response = await client
     .from('restaurant_inventory')
     .update(updatedRestaurant)
     .match({ id });
