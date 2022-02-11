@@ -1,5 +1,23 @@
 import { checkError, client } from './client';
 
+export async function updateRestaurant(id, updatedRestaurant) {
+  const response = await response 
+    .from('restaurant_inventory')
+    .update(updatedRestaurant)
+    .match({ id });
+
+  return checkError(response);
+}
+
+export async function deleteRestaurant(id) {
+  const response = await client 
+    .from('restaurant_inventory')
+    .delete()
+    .match({ id });
+
+  return checkError(response);
+}
+
 export async function createRestaurant(restaurant) {
   const response = await client 
     .from('restaurant_inventory')

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 export default function CreatePage() {
   const history = useHistory();
   const [name, setName] = useState('');
-  const [location, setLocation] = useState('');
+  const [located, setLocated] = useState('');
   const [type, setType] = useState('');
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState('');
@@ -15,7 +15,7 @@ export default function CreatePage() {
 
     await createRestaurant({
       name,
-      location,
+      located,
       type,
       price_rate: price,
       description
@@ -34,7 +34,7 @@ export default function CreatePage() {
         </label>
         <label>
             Location 
-          <input value={location} onChange={e => setLocation(e.target.value)} required name='location' />
+          <input value={located} onChange={e => setLocated(e.target.value)} required name='located' />
         </label>
         <label>
             Type 
